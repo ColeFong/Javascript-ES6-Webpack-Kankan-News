@@ -21,6 +21,7 @@ npm/cnpm run webpack
 ``` 
 ##### 可在package.json进行运行命令的修改
 ##### 3.运行
-``` npm/cnpm run dev
+``` 
+npm/cnpm run dev
 ``` 
 ###### 如果该项目对您有帮助的话麻烦给个Star噢~
