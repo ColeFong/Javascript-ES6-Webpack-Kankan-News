@@ -1,56 +1,55 @@
-import './imports';
+import './imports'
 
-import Header from '../components/Header';
-import NewsList from '../components/NewsList';
-import NoDataTip from '../components/NoDataTip';
+import Header from '../components/Header'
+import NewsList from '../components/NewsList'
+import NoDataTip from '../components/NoDataTip'
 
 ;((doc) => {
-  
-  const oApp = doc.querySelector('#app');
-  const followedList = JSON.parse(localStorage.getItem('followedList') || '[]');
-  let oListWrapper = null;
+  const oApp = doc.querySelector('#app')
+  const followedList = JSON.parse(localStorage.getItem('followedList') || '[]')
+  let oListWrapper = null
 
   const init = () => {
-    render();
-    bindEvent();
+    render()
+    bindEvent()
   }
 
-  function render () {
+  function render() {
     const headerTpl = Header.tpl({
       url: '/',
       title: '我的新闻',
       showLeftIcon: true,
-      showRightIcon: false
-    });
+      showRightIcon: false,
+    })
 
     if (followedList.length) {
-      const listWrapperTpl = NewsList.wrapperTpl(44);
-      oApp.innerHTML += (headerTpl + listWrapperTpl);
-      oListWrapper = oApp.querySelector('.news-list');
-      renderList(followedList);
+      const listWrapperTpl = NewsList.wrapperTpl(44)
+      oApp.innerHTML += headerTpl + listWrapperTpl
+      oListWrapper = oApp.querySelector('.news-list')
+      renderList(followedList)
     } else {
-      oApp.innerHTML += (headerTpl + NoDataTip.tpl());
+      oApp.innerHTML += headerTpl + NoDataTip.tpl()
     }
   }
 
-  function bindEvent () {
-    followedList.length && NewsList.bindEvent(oListWrapper, setCurrentNews);
+  function bindEvent() {
+    followedList.length && NewsList.bindEvent(oListWrapper, setCurrentNews)
   }
 
-  function renderList (data) {
+  function renderList(data) {
     const newsListTpl = NewsList.tpl({
       data,
-      pageNum: -1
-    });
-    oListWrapper.innerHTML += newsListTpl;
-    NewsList.imgShow();
+      pageNum: -1,
+    })
+    oListWrapper.innerHTML += newsListTpl
+    NewsList.imgShow()
   }
 
-  function setCurrentNews (options) {
-    const { idx } = options;
-    const currentNews = followedList[idx];
-    localStorage.setItem('currentNews', JSON.stringify(currentNews));
+  function setCurrentNews(options) {
+    const { idx } = options
+    const currentNews = followedList[idx]
+    localStorage.setItem('currentNews', JSON.stringify(currentNews))
   }
 
-  init();
-})(document);
+  init()
+})(document)

@@ -1,6 +1,6 @@
-const { resolve } = require('path');
-const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { resolve } = require('path')
+const autoprefixer = require('autoprefixer')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   // 模式：开发  生产
@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'source-map',
   // 优化，禁止压缩 最小化
   optimization: {
-    minimize: false
+    minimize: false,
   },
   // 入口文件  多文件入口
   entry: {
@@ -22,7 +22,7 @@ module.exports = {
     // 路径
     path: resolve(__dirname, './dist'),
     // 打包后的文件名
-    filename: 'js/[name].js'
+    filename: 'js/[name].js',
   },
   // 模块设置
   module: {
@@ -33,12 +33,12 @@ module.exports = {
         loader: 'babel-loader',
         exclude: resolve(__dirname, 'node_modules'),
         query: {
-          'presets': ['latest']
-        }
+          presets: ['latest'],
+        },
       },
       {
         test: /\.tpl$/,
-        loader: 'ejs-loader'
+        loader: 'ejs-loader',
       },
       {
         test: /\.css$/,
@@ -49,11 +49,11 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: function () {
-                return [autoprefixer('last 5 versions')];
-              }
-            }
-          }
-        ]
+                return [autoprefixer('last 5 versions')]
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
@@ -64,18 +64,18 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               plugins: function () {
-                return [autoprefixer('last 5 versions')];
-              }
-            }
+                return [autoprefixer('last 5 versions')]
+              },
+            },
           },
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.(png|jpg|jpeg|gif|ico|woff|eot|svg|ttf)$/i,
-        loaders: 'url-loader?limit=1024&name=img/[name]-[hash:16].[ext]'
-      }
-    ]
+        loaders: 'url-loader?limit=1024&name=img/[name]-[hash:16].[ext]',
+      },
+    ],
   },
   // 插件配置
   plugins: [
@@ -89,8 +89,8 @@ module.exports = {
       hash: true,
       minify: {
         removeComments: true,
-        collapseWhitespace: true
-      }
+        collapseWhitespace: true,
+      },
     }),
     new HtmlWebpackPlugin({
       filename: 'detail.html',
@@ -102,8 +102,8 @@ module.exports = {
       hash: true,
       minify: {
         removeComments: true,
-        collapseWhitespace: true
-      }
+        collapseWhitespace: true,
+      },
     }),
     new HtmlWebpackPlugin({
       filename: 'collections.html',
@@ -115,17 +115,17 @@ module.exports = {
       hash: true,
       minify: {
         removeComments: true,
-        collapseWhitespace: true
-      }
+        collapseWhitespace: true,
+      },
     }),
   ],
   // 开发服务器的配置
   devServer: {
     watchOptions: {
-      ignored: /node_modules/
+      ignored: /node_modules/,
     },
     open: true,
     host: 'localhost',
-    port: 3000
-  }
+    port: 3001,
+  },
 }

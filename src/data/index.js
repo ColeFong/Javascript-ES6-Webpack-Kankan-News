@@ -1,46 +1,44 @@
 const NEWS_TYPE = [
   {
     type: 'top',
-    title: '头条'
+    title: '头条',
   },
   {
     type: 'shehui',
-    title: '社会'
+    title: '社会',
   },
   {
     type: 'guonei',
-    title: '国内'
+    title: '国内',
   },
   {
     type: 'guoji',
-    title: '国际'
+    title: '国际',
   },
   {
     type: 'yule',
-    title: '娱乐'
+    title: '娱乐',
   },
   {
     type: 'tiyu',
-    title: '体育'
+    title: '体育',
   },
   {
     type: 'junshi',
-    title: '军事'
+    title: '军事',
   },
   {
     type: 'keji',
-    title: '科技'
+    title: '科技',
   },
   {
     type: 'caijing',
-    title: '财经'
+    title: '财经',
   },
   {
     type: 'shishang',
-    title: '时尚'
-  }
-];
+    title: '时尚',
+  },
+]
 
-export {
-  NEWS_TYPE
-}
+export { NEWS_TYPE }

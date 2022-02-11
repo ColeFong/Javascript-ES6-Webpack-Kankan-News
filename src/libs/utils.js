@@ -1,47 +1,47 @@
-function tplReplace (template, templateObject) {
+function tplReplace(template, templateObject) {
   return template().replace(/\{\{(.*?)\}\}/g, (node, key) => {
-    return templateObject[key.trim()];
-  });
+    return templateObject[key.trim()]
+  })
 }
 
-function scrollToTop () {
+function scrollToTop() {
   setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 0);
+    window.scrollTo(0, 0)
+  }, 0)
 }
 
-function setPageData (data, count) {
-  const len = data.length;
+function setPageData(data, count) {
+  const len = data.length
 
-  let pageData = [];
-  let index = 0;
+  let pageData = []
+  let index = 0
 
   while (index < len) {
-    pageData.push(data.slice(index, index += count));
+    pageData.push(data.slice(index, (index += count)))
   }
 
-  return pageData;
+  return pageData
 }
 
-function scrollToBottom (callback) {
+function scrollToBottom(callback) {
   if (_getScrollTop() + _getWindowHeight() === _getScrollHeight()) {
-    callback();
+    callback()
   }
 }
 
-function getItemNode (target) {
-  while (target = target.parentNode) {
+function getItemNode(target) {
+  while ((target = target.parentNode)) {
     if (target.className.split(' ')[0] === 'news-item') {
-      return target;
+      return target
     }
   }
 }
 
-function getUrlQueryValue (key) {
-  const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i');
-  const res = window.location.search.substr(1).match(reg);
+function getUrlQueryValue(key) {
+  const reg = new RegExp('(^|&)' + key + '=([^&]*)(&|$)', 'i')
+  const res = window.location.search.substr(1).match(reg)
 
-  return res !== null ? decodeURIComponent(res[2]) : null;
+  return res !== null ? decodeURIComponent(res[2]) : null
 }
 
 export {
@@ -50,40 +50,48 @@ export {
   setPageData,
   scrollToBottom,
   getItemNode,
-  getUrlQueryValue
+  getUrlQueryValue,
 }
 
-/*********** 内部方法 ************/
+/*********** 工具方法 ************/
 function _getScrollTop() {
-  var scrollTop = 0, bodyScrollTop = 0, documentScrollTop = 0;
+  var scrollTop = 0,
+    bodyScrollTop = 0,
+    documentScrollTop = 0
   if (document.body) {
-    bodyScrollTop = document.body.scrollTop;
+    bodyScrollTop = document.body.scrollTop
   }
   if (document.documentElement) {
-    documentScrollTop = document.documentElement.scrollTop;
+    documentScrollTop = document.documentElement.scrollTop
   }
-  scrollTop = (bodyScrollTop - documentScrollTop > 0) ? bodyScrollTop : documentScrollTop;
-  return scrollTop;
+  scrollTop =
+    bodyScrollTop - documentScrollTop > 0 ? bodyScrollTop : documentScrollTop
+  return scrollTop
 }
 
 function _getScrollHeight() {
-  var scrollHeight = 0, bodyScrollHeight = 0, documentScrollHeight = 0;
+  var scrollHeight = 0,
+    bodyScrollHeight = 0,
+    documentScrollHeight = 0
   if (document.body) {
-    bodyScrollHeight = document.body.scrollHeight;
+    bodyScrollHeight = document.body.scrollHeight
   }
   if (document.documentElement) {
-    documentScrollHeight = document.documentElement.scrollHeight;
+    documentScrollHeight = document.documentElement.scrollHeight
   }
-  scrollHeight = (bodyScrollHeight - documentScrollHeight > 0) ? bodyScrollHeight : documentScrollHeight;
-  return scrollHeight;
+  scrollHeight =
+    bodyScrollHeight - documentScrollHeight > 0
+      ? bodyScrollHeight
+      : documentScrollHeight
+  return scrollHeight
 }
 
 function _getWindowHeight() {
-  var windowHeight = 0;
-  if (document.compatMode == "CSS1Compat") {
-    windowHeight = document.documentElement.clientHeight;
+  var windowHeight = 0
+  if (document.compatMode == 'CSS1Compat') {
+    windowHeight = document.documentElement.clientHeight
   } else {
-    windowHeight = document.body.clientHeight;
+    windowHeight = document.body.clientHeight
   }
-  return windowHeight;
+  return windowHeight
 }
